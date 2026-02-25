@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chambo Wave: The definitive maritime highway of Lake Malawi. Passenger and Cargo navigation." />
+    <title>Chambo Wave | The Great Rift Valley Maritime</title>
+    
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Modern Tech-Maritime Typography: Outfit for clean power, Space Mono for technical data -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="editorial-body">
+    
+    <!-- Minimalist Navigation overlay -->
+    <nav class="editorial-nav">
+      <div class="nav-brand">CHAMBO WAVE</div>
+      <div class="nav-links">
+        <a href="#journey">The Journey</a>
+        <a href="#vessels">Vessels</a>
+        <a href="#manifest">Manifest</a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Hero: Full Screen Cinematic Immerse -->
+      <section class="hero-immersive">
+        <!-- Authentic cinematic waves from a robust source (Pexels) -->
+        <!-- Cinematic Aerial Container Ship (New Hero) -->
+        <video autoplay loop muted playsinline class="hero-bg-video">
+          <source src="https://videos.pexels.com/video-files/26893764/12028871_1920_1080_24fps.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="eyebrow fade-in">Navigate the Rift</span>
+          <h1 class="fade-in stag-1">The<br>Lake<br><em>Awaits</em></h1>
+          <p class="hero-body fade-in stag-2">
+            Connecting the shores of Malawi, Tanzania, and Mozambique through reliable passenger voyages and heavy freight logistics. The definitive maritime highway of the Great Rift Valley.
+          </p>
+        </div>
+      </section>
+
+      <!-- The Journey: Asymmetrical Editorial Narrative -->
+      <section class="story-section" id="journey">
+        
+        <div class="story-block text-left">
+          <div class="story-text parallax-text">
+            <span class="chap-num">I.</span>
+            <h2>Passenger<br><em>Voyages</em></h2>
+            <p>
+              Forget the cramped highways. Experience the gentle swell of Africa’s third largest lake. We connect remote coastal communities and bustling hubs—from Likoma Island to Nkhata Bay—providing safe, scheduled passage that feels less like a commute and more like an expedition.
+            </p>
+          </div>
+          <div class="story-image img-right reveal-img">
+            <img src="https://images.pexels.com/photos/5226046/pexels-photo-5226046.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lake Malawi Passenger Ferry" loading="lazy" />
+          </div>
+        </div>
+
+        <div class="story-block text-right">
+          <div class="story-image img-left reveal-img">
+            <!-- Sea POV Cinematic (Repurposed from Hero) -->
+            <video autoplay loop muted playsinline class="section-bg-video">
+              <source src="https://videos.pexels.com/video-files/10904397/10904397-hd_2560_1440_30fps.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="story-text parallax-text">
+            <span class="chap-num">II.</span>
+            <h2>Heavy<br><em>Freight</em></h2>
+            <p>
+              Agriculture, vehicles, and industrial materials form the lifeblood of regional trade. Our cargo vessels are engineered specifically for the unique conditions of Lake Malawi, featuring deep holds and reinforced decks to handle vital freight across domestic and international waters.
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- The Map/Spine: Interactive Route View -->
+      <section class="route-spine" id="vessels">
+        <div class="spine-container">
+          <div class="spine-header text-center fade-in">
+            <h2>The Maritime Highway</h2>
+          <div class="ledger-meta reveal-item">
+            <div class="trip-toggle">
+              <button class="toggle-btn active" data-trip="return">Return Trip</button>
+              <button class="toggle-btn" data-trip="oneway">One-Way</button>
+            </div>
+            <p class="ledger-instruction">Select your origin and destination below.</p>
+          </div>
+
+          <!-- Refined 3-Column Integrated Booking Ledger -->
+          <div class="destination-ledger reveal-item">
+            <!-- Header Row for Aesthetic Alignment -->
+            <div class="ledger-header">
+              <span class="col-identity">Port Identity</span>
+              <span class="col-logic">Logistical Selection</span>
+              <span class="col-date">Scheduled Date</span>
+            </div>
+
+            <!-- Ledger Entry: Chilumba -->
+            <div class="ledger-row" data-port-id="chilumba">
+              <div class="ledger-identity">
+                <span class="ledger-coords">10°26'S 34°15'E</span>
+                <span class="ledger-name">Chilumba</span>
+              </div>
+              <div class="ledger-logic">
+                <button class="ledger-btn" data-action="from">Set Origin</button>
+                <div class="ledger-divider"></div>
+                <button class="ledger-btn" data-action="to">Set Destination</button>
+              </div>
+              <div class="ledger-date-col">
+                <div class="date-display" id="date-display-chilumba">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="date-input-chilumba">
+              </div>
+            </div>
+
+            <!-- Ledger Entry: Nkhata Bay -->
+            <div class="ledger-row" data-port-id="nkhata-bay">
+              <div class="ledger-identity">
+                <span class="ledger-coords">11°36'S 34°18'E</span>
+                <span class="ledger-name">Nkhata Bay</span>
+              </div>
+              <div class="ledger-logic">
+                <button class="ledger-btn" data-action="from">Set Origin</button>
+                <div class="ledger-divider"></div>
+                <button class="ledger-btn" data-action="to">Set Destination</button>
+              </div>
+              <div class="ledger-date-col">
+                <div class="date-display" id="date-display-nkhata-bay">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="date-input-nkhata-bay">
+              </div>
+            </div>
+
+            <!-- Ledger Entry: Likoma -->
+            <div class="ledger-row" data-port-id="likoma">
+              <div class="ledger-identity">
+                <span class="ledger-coords">12°04'S 34°44'E</span>
+                <span class="ledger-name">Likoma Island</span>
+              </div>
+              <div class="ledger-logic">
+                <button class="ledger-btn" data-action="from">Set Origin</button>
+                <div class="ledger-divider"></div>
+                <button class="ledger-btn" data-action="to">Set Destination</button>
+              </div>
+              <div class="ledger-date-col">
+                <div class="date-display" id="date-display-likoma">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="date-input-likoma">
+              </div>
+            </div>
+
+            <!-- Ledger Entry: Chipoka -->
+            <div class="ledger-row" data-port-id="chipoka">
+              <div class="ledger-identity">
+                <span class="ledger-coords">13°59'S 34°31'E</span>
+                <span class="ledger-name">Chipoka</span>
+              </div>
+              <div class="ledger-logic">
+                <button class="ledger-btn" data-action="from">Set Origin</button>
+                <div class="ledger-divider"></div>
+                <button class="ledger-btn" data-action="to">Set Destination</button>
+              </div>
+              <div class="ledger-date-col">
+                <div class="date-display" id="date-display-chipoka">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="date-input-chipoka">
+              </div>
+            </div>
+
+            <!-- Ledger Entry: Monkey Bay -->
+            <div class="ledger-row" data-port-id="monkey-bay">
+              <div class="ledger-identity">
+                <span class="ledger-coords">14°04'S 34°55'E</span>
+                <span class="ledger-name">Monkey Bay</span>
+              </div>
+              <div class="ledger-logic">
+                <button class="ledger-btn" data-action="from">Set Origin</button>
+                <div class="ledger-divider"></div>
+                <button class="ledger-btn" data-action="to">Set Destination</button>
+              </div>
+              <div class="ledger-date-col">
+                <div class="date-display" id="date-display-monkey-bay">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="date-input-monkey-bay">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Manifest: Passenger Details & Demographics -->
+      <section class="manifest-section" id="manifest" style="display: none;">
+        <div class="container-narrow">
+          <div class="manifest-header text-center fade-in">
+            <h2>Passenger Manifest</h2>
+            <p class="manifest-subtitle">Logistics for the upcoming crossing.</p>
+          </div>
+
+          <div class="manifest-selection-display fade-in stag-1">
+            <div class="selection-item">
+              <label>Selected Route</label>
+              <span id="route-summary">...</span>
+            </div>
+            <div class="selection-item">
+              <label>Selected Date</label>
+              <span id="date-summary">...</span>
+            </div>
+          </div>
+
+          <form class="manifest-form fade-in stag-2">
+            <div class="form-row grid-2">
+              <div class="input-group">
+                <label>Legal Full Name</label>
+                <input type="text" placeholder="As per identification" required>
+              </div>
+              <div class="input-group">
+                <label>Passenger Demographic</label>
+                <select>
+                  <option>1 Adult</option>
+                  <option>2 Adults</option>
+                  <option>Family (2 Adult, 2 Child)</option>
+                  <option>Group (4+ Adults)</option>
+                  <option>Commercial Logistics</option>
+                </select>
+              </div>
+            </div>
+            <div class="payment-method-selector fade-in stag-3">
+              <label class="section-label">Settlement Method</label>
+              <div class="method-toggles">
+                <button type="button" class="method-btn active" data-method="card">Visa / Credit Card</button>
+                <button type="button" class="method-btn" data-method="mobile">Mobile Money</button>
+              </div>
+            </div>
+
+            <div id="payment-fields-card" class="payment-fields fade-in stag-4">
+              <div class="form-row grid-2">
+                <div class="input-group">
+                  <label>Card Number</label>
+                  <input type="text" placeholder="0000 0000 0000 0000" pattern="[0-9 ]{16,}" required>
+                </div>
+                <div class="form-row grid-2" style="margin-top: 0;">
+                  <div class="input-group">
+                    <label>Expiry</label>
+                    <input type="text" placeholder="MM / YY" required>
+                  </div>
+                  <div class="input-group">
+                    <label>CVV</label>
+                    <input type="password" placeholder="***" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="payment-fields-mobile" class="payment-fields fade-in stag-4" style="display: none;">
+              <div class="form-row grid-2">
+                <div class="input-group">
+                  <label>Service Provider</label>
+                  <select>
+                    <option>Airtel Money Malawi</option>
+                    <option>TNM Mpamba</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <label>Phone Number</label>
+                  <input type="tel" placeholder="+265 ...">
+                </div>
+              </div>
+              <p class="method-hint">A push notification will be sent to your device for PIN verification.</p>
+            </div>
+            
+            <div class="manifest-checkout">
+              <div class="checkout-summary">
+                <div class="summary-item">Base Fare: <span id="fare-estimate">MWK 45,000.00</span></div>
+                <div class="summary-item">Logistics: <span id="vessel-assignment">ASSIGNING VESSEL</span></div>
+              </div>
+              <button type="submit" class="payment-btn">Complete Reservation</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="editorial-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>CHAMBO WAVE</h2>
+          <p>The definitive maritime highway of the Great Rift Valley, connecting the shores of Malawi, Tanzania, and Mozambique.</p>
+          <div class="brand-meta">
+            <span>Monkey Bay Headquarters, Republic of Malawi.</span><br>
+            <span>&copy; <span id="year"></span> All rights reserved.</span>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <div class="link-column">
+            <h3>Operations</h3>
+            <a href="#">Passenger Voyages</a>
+            <a href="#">Heavy Freight Shipping</a>
+            <a href="#">Vessel Charters</a>
+            <a href="#">The Fleet</a>
+          </div>
+          <div class="link-column">
+            <h3>Logistics & Legal</h3>
+            <a href="#">Cargo Tariffs 2026</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Maritime Privacy Policy</a>
+            <a href="#">Port Authority Mandates</a>
+          </div>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Dockmaster Support</h3>
+          <p>For urgent logistical inquiries or private charters, contact headquarters directly.</p>
+          <a href="mailto:dispatch@chambowave.mw" class="contact-email">dispatch@chambowave.mw</a>
+          <span class="vhf-channel">VHF Channel 16 Monitored</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // State management for booking
+      const bookingState = {
+        tripType: 'return', // 'return' or 'oneway'
+        origin: null,
+        destination: null,
+        departureDate: null,
+        returnDate: null
+      };
+
+      const ledgerRows = document.querySelectorAll('.ledger-row');
+      const manifestSection = document.getElementById('manifest');
+      const routeSummary = document.getElementById('route-summary');
+      const dateSummary = document.getElementById('date-summary');
+      const nameInput = document.querySelector('.manifest-form input[type="text"]');
+
+      function checkCompletion() {
+        const hasOrigin = !!bookingState.origin;
+        const hasDest = !!bookingState.destination;
+        const hasDeptDate = !!bookingState.departureDate;
+        const hasRetDate = !!bookingState.returnDate;
+
+        let isComplete = false;
+        if (bookingState.tripType === 'oneway') {
+          isComplete = hasOrigin && hasDest && hasDeptDate;
+        } else {
+          isComplete = hasOrigin && hasDest && hasDeptDate && hasRetDate;
+        }
+
+        if (isComplete) {
+          revealManifest();
+        }
+      }
+
+      function revealManifest() {
+        manifestSection.style.display = 'block';
+        if (!manifestSection.classList.contains('is-visible')) {
+          manifestSection.classList.add('is-visible');
+          manifestSection.scrollIntoView({ behavior: 'smooth' });
+          // Auto-focus the name field after a slight delay for smooth scroll
+          setTimeout(() => nameInput.focus(), 800);
+        }
+      }
+
+      function updateSummary() {
+        const routeText = `${bookingState.origin || '...'} → ${bookingState.destination || '...'}`;
+        let dateText = `${bookingState.departureDate || '...'}`;
+        if (bookingState.tripType === 'return') {
+          dateText += ` / ${bookingState.returnDate || '...'}`;
+        }
+        
+        routeSummary.textContent = routeText;
+        dateSummary.textContent = dateText;
+        checkCompletion();
+      }
+
+      // Handle trip type toggle
+      document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          bookingState.tripType = e.target.getAttribute('data-trip');
+          updateSummary();
+        });
+      });
+
+      document.querySelectorAll('.ledger-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const action = e.target.getAttribute('data-action');
+          const row = e.target.closest('.ledger-row');
+          const portName = row.querySelector('.ledger-name').textContent;
+          
+          if (action === 'from') {
+            bookingState.origin = portName;
+            ledgerRows.forEach(r => r.classList.remove('active-from'));
+            row.classList.add('active-from');
+          } else {
+            bookingState.destination = portName;
+            ledgerRows.forEach(r => r.classList.remove('active-to'));
+            row.classList.add('active-to');
+          }
+
+          // Visual cue: open the date picker for this row
+          const dateInput = row.querySelector('.ledger-date-input');
+          dateInput.showPicker();
+          
+          updateSummary();
+        });
+      });
+
+      // Handle date changes on each row
+      document.querySelectorAll('.ledger-date-input').forEach(input => {
+        input.addEventListener('change', (e) => {
+          const row = e.target.closest('.ledger-row');
+          const dateValue = e.target.value;
+          const display = row.querySelector('.date-display');
+          
+          display.textContent = dateValue || '-- / -- / ----';
+          
+          if (row.classList.contains('active-from')) {
+            bookingState.departureDate = dateValue;
+          } else if (row.classList.contains('active-to')) {
+            bookingState.returnDate = dateValue;
+          }
+          
+          updateSummary();
+        });
+      });
+
+      // Intersection Observer for scroll animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal-item, .fade-in, .reveal-img').forEach(el => observer.observe(el));
+      
+      // Payment Method Toggling
+      document.querySelectorAll('.method-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.method-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          const method = e.target.getAttribute('data-method');
+          document.querySelectorAll('.payment-fields').forEach(f => f.style.display = 'none');
+          document.getElementById(`payment-fields-${method}`).style.display = 'block';
+        });
+      });
+
+      // Functional Checkout logic
+      const manifestForm = document.querySelector('.manifest-form');
+      manifestForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const submitBtn = document.querySelector('.payment-btn');
+        const originalText = submitBtn.textContent;
+        
+        // Simulate processing state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Authenticating...';
+        submitBtn.style.background = '#00A3AD'; // Use Turquoise for processing
+        
+        setTimeout(() => {
+          submitBtn.textContent = 'Finalizing Vessel Assignment...';
+          
+          setTimeout(() => {
+            // Create and show confirmation overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'confirmation-overlay';
+            overlay.innerHTML = `
+              <div class="confirmation-card fade-in">
+                <span class="conf-icon">✓</span>
+                <h2>Reservation Confirmed</h2>
+                <div class="conf-details">
+                  <p><strong>Route:</strong> ${bookingState.origin} → ${bookingState.destination}</p>
+                  <p><strong>Vessel:</strong> MV CHILLO (Draft Assignment)</p>
+                  <p><strong>Status:</strong> Settlement Successful</p>
+                </div>
+                <p class="conf-hint">A digital manifest has been dispatched to your provided credentials.</p>
+                <button onclick="window.location.reload()" class="conf-close">Return to Main Deck</button>
+              </div>
+            `;
+            document.body.appendChild(overlay);
+          }, 1500);
+        }, 1500);
+      });
+
+      // Footer year & dynamic date constraints
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      const today = new Date().toISOString().split('T')[0];
+      document.querySelectorAll('.ledger-date-input').forEach(input => {
+        input.setAttribute('min', today);
+      });
+    </script>
+  </body>
+</html>
