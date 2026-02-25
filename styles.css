@@ -900,7 +900,7 @@ a {
 
 /* --- CINEMATIC FOOTER --- */
 .editorial-footer {
-  background-color: var(--color-indigo, #031525);
+  background-color: var(--text-dark, #1a1a1a);
   color: var(--color-white, #FFFFFF);
   padding: 8rem 5vw 4rem 5vw;
   font-family: var(--font-sans);
