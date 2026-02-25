@@ -1078,11 +1078,11 @@ a {
 @media (max-width: 768px) {
   .editorial-nav {
     padding: 1.5rem;
+    justify-content: center;
   }
   .nav-brand {
     font-size: 0.9rem;
     letter-spacing: 0.2em;
-    width: 100%;
     text-align: center;
   }
   
