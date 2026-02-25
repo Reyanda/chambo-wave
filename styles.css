@@ -901,7 +901,7 @@ a {
 
 /* --- CINEMATIC FOOTER --- */
 .editorial-footer {
-  background-color: var(--text-dark, #1a1a1a);
+  background-color: #004D56; /* Deep Real Lake Water */
   color: var(--color-white, #FFFFFF);
   padding: 8rem 5vw 4rem 5vw;
   font-family: var(--font-sans);
