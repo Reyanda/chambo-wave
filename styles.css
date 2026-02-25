@@ -767,8 +767,16 @@ a {
   transition: width 0.3s;
 }
 
-.ledger-btn:hover::after {
+.ledger-btn:hover::after,
+.ledger-row.active-from .ledger-btn[data-action="from"]::after,
+.ledger-row.active-to .ledger-btn[data-action="to"]::after {
   width: 100%;
+}
+
+.ledger-row.active-from .ledger-btn[data-action="from"],
+.ledger-row.active-to .ledger-btn[data-action="to"] {
+  color: var(--color-indigo);
+  font-weight: 700;
 }
 
 .ledger-divider {
@@ -1102,7 +1110,13 @@ a {
 
   .global-dates {
     flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
+  }
+
+  .date-group {
+    align-items: center;
+    text-align: center;
   }
 
   /* Bottom App Navigation styling */
