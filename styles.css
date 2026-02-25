@@ -62,18 +62,6 @@ a {
   text-transform: uppercase;
 }
 
-.mobile-menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-}
-
 .nav-links {
   display: flex;
   gap: 4rem;
@@ -1035,6 +1023,10 @@ a {
   }
 }
 
+.mobile-bottom-bar {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .editorial-nav {
     padding: 1.5rem;
@@ -1042,42 +1034,68 @@ a {
   .nav-brand {
     font-size: 0.9rem;
     letter-spacing: 0.2em;
-    z-index: 1001; /* Stay above overlay */
-  }
-  .mobile-menu-toggle {
-    display: block;
-    z-index: 1001;
+    width: 100%;
+    text-align: center;
   }
   
-  /* Hide standard desktop nav structure before JS interception */
-  .editorial-nav > .nav-links:not(.nav-active) {
+  /* Hide standard desktop nav structure */
+  .editorial-nav .nav-links {
     display: none;
   }
 
-  .nav-links {
+  /* Bottom App Navigation styling */
+  .mobile-bottom-bar {
+    display: flex;
     position: fixed;
-    display: flex !important; /* Override the hiding rule above when activated */
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: var(--color-indigo);
-    flex-direction: column;
-    justify-content: center;
+    background: rgba(3, 21, 37, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    justify-content: space-around;
     align-items: center;
-    gap: 3rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
+    padding: 0.5rem 1rem 1.5rem 1rem; /* Extra padding for iOS bottom edge */
     z-index: 1000;
   }
-  .nav-links.nav-active {
-    opacity: 1;
-    pointer-events: all;
+
+  .bottom-nav-item {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease;
   }
-  .nav-links a {
-    font-size: 1.5rem;
-    opacity: 1;
+
+  .bottom-nav-item:hover, .bottom-nav-item:active {
+    color: var(--color-white);
+  }
+
+  /* Central SVG Home Button */
+  .bottom-nav-home {
+    background: var(--color-sienna);
+    color: var(--color-white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(184, 93, 56, 0.4);
+    transform: translateY(-20px); /* Raised effect */
+    transition: transform 0.3s ease;
+  }
+  
+  .bottom-nav-home:active {
+    transform: translateY(-18px) scale(0.95);
+  }
+
+  .bottom-nav-home svg {
+    width: 24px;
+    height: 24px;
   }
 
   .footer-container {

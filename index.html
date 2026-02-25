@@ -20,11 +20,10 @@
     <!-- Minimalist Navigation overlay -->
     <nav class="editorial-nav">
       <div class="nav-brand">CHAMBO WAVE</div>
-      <button class="mobile-menu-toggle" id="mobile-toggle">Menu</button>
-      <div class="nav-links" id="nav-links">
-        <a href="#journey" class="nav-close">The Journey</a>
-        <a href="#vessels" class="nav-close">Vessels</a>
-        <a href="#manifest" class="nav-close">Manifest</a>
+      <div class="nav-links">
+        <a href="#journey">The Journey</a>
+        <a href="#vessels">Booking</a>
+        <a href="#manifest">Manifest</a>
       </div>
     </nav>
 
@@ -282,6 +281,18 @@
       </section>
     </main>
 
+    <!-- App-Style Bottom Navigation for Mobile -->
+    <nav class="mobile-bottom-bar">
+      <a href="#journey" class="bottom-nav-item">The Journey</a>
+      <a href="#" class="bottom-nav-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </a>
+      <a href="#vessels" class="bottom-nav-item">Booking</a>
+    </nav>
+
     <footer class="editorial-footer">
       <div class="footer-container">
         <div class="footer-brand">
@@ -328,25 +339,6 @@
         departureDate: null,
         returnDate: null
       };
-
-      // Mobile Menu Toggle
-      const mobileToggle = document.getElementById('mobile-toggle');
-      const navLinks = document.getElementById('nav-links');
-      const navCloseLinks = document.querySelectorAll('.nav-close');
-
-      if (mobileToggle && navLinks) {
-        mobileToggle.addEventListener('click', () => {
-          navLinks.classList.toggle('nav-active');
-          mobileToggle.textContent = navLinks.classList.contains('nav-active') ? 'Close' : 'Menu';
-        });
-
-        navCloseLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('nav-active');
-            mobileToggle.textContent = 'Menu';
-          });
-        });
-      }
 
       const ledgerRows = document.querySelectorAll('.ledger-row');
       const manifestSection = document.getElementById('manifest');
