@@ -1048,8 +1048,15 @@ a {
     display: block;
     z-index: 1001;
   }
+  
+  /* Hide standard desktop nav structure before JS interception */
+  .editorial-nav > .nav-links:not(.nav-active) {
+    display: none;
+  }
+
   .nav-links {
     position: fixed;
+    display: flex !important; /* Override the hiding rule above when activated */
     top: 0;
     left: 0;
     width: 100%;
