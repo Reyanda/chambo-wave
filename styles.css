@@ -406,12 +406,14 @@ a {
 /* Scheduler Bar (Flight Booking Style) */
 .scheduler-bar {
     background: var(--color-white);
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.05);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 2.5rem;
     margin-top: 3rem;
     margin-bottom: 2rem;
 }
@@ -446,7 +448,9 @@ a {
 
 .global-dates {
     display: flex;
-    gap: 2rem;
+    justify-content: center;
+    gap: 3rem;
+    width: 100%;
 }
 
 .date-group {
