@@ -145,15 +145,10 @@ a {
   font-size: clamp(1.1rem, 1.5vw, 1.35rem); /* Slightly larger base */
   font-weight: 400; /* Increased weight for legibility */
   opacity: 1;
-  text-shadow: 0 4px 16px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.5); /* Strong multi-layer shadow */
+  color: var(--bg-white);
 }
 
-@media (max-width: 768px) {
-  .hero-body {
-    /* Adaptive: Ensure readability on mobile over busy backgrounds without a glassy box */
-    text-shadow: 0 4px 16px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.8);
-  }
-}
+/* --- THE JOURNEY: Asymmetrical Narrative --- */
 
 /* --- THE JOURNEY: Asymmetrical Narrative --- */
 .story-section {
