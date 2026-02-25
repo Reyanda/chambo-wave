@@ -20,10 +20,11 @@
     <!-- Minimalist Navigation overlay -->
     <nav class="editorial-nav">
       <div class="nav-brand">CHAMBO WAVE</div>
-      <div class="nav-links">
-        <a href="#journey">The Journey</a>
-        <a href="#vessels">Vessels</a>
-        <a href="#manifest">Manifest</a>
+      <button class="mobile-menu-toggle" id="mobile-toggle">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#journey" class="nav-close">The Journey</a>
+        <a href="#vessels" class="nav-close">Vessels</a>
+        <a href="#manifest" class="nav-close">Manifest</a>
       </div>
     </nav>
 
@@ -327,6 +328,25 @@
         departureDate: null,
         returnDate: null
       };
+
+      // Mobile Menu Toggle
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const navCloseLinks = document.querySelectorAll('.nav-close');
+
+      if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('nav-active');
+          mobileToggle.textContent = navLinks.classList.contains('nav-active') ? 'Close' : 'Menu';
+        });
+
+        navCloseLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('nav-active');
+            mobileToggle.textContent = 'Menu';
+          });
+        });
+      }
 
       const ledgerRows = document.querySelectorAll('.ledger-row');
       const manifestSection = document.getElementById('manifest');
