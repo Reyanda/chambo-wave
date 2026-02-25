@@ -1109,14 +1109,17 @@ a {
   }
 
   .global-dates {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
   }
 
   .date-group {
+    flex: 1;
     align-items: center;
     text-align: center;
+    min-width: 0; /* allows shrinking below 150px if needed */
   }
 
   /* Bottom App Navigation styling */
