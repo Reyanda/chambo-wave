@@ -1083,6 +1083,28 @@ a {
     display: none;
   }
 
+  /* Scheduler Stack Mobile Layout */
+  .scheduler-bar {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+  
+  .trip-toggle {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .toggle-btn {
+    flex: 1;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.65rem;
+  }
+
+  .global-dates {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
   /* Bottom App Navigation styling */
   .mobile-bottom-bar {
     display: flex;
