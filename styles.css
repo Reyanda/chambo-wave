@@ -1087,6 +1087,27 @@ a {
   .footer-brand p {
     margin: 0 auto 2rem auto;
   }
+  
+  /* Passenger Manifest Mobile Overrides */
+  .manifest-section .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .method-toggles {
+    flex-direction: column;
+  }
+  
+  .manifest-checkout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .payment-btn {
+    width: 100%;
+  }
 }
 
 /* Confirmation Overlay */
