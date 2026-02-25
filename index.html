@@ -84,21 +84,36 @@
         <div class="spine-container">
           <div class="spine-header text-center fade-in">
             <h2>The Maritime Highway</h2>
-          <div class="ledger-meta reveal-item">
+            <p class="ledger-instruction">Configure your logistics and select your routing.</p>
+          </div>
+
+          <!-- New Flight-Style Global Scheduler Bar -->
+          <div class="scheduler-bar reveal-item">
             <div class="trip-toggle">
               <button class="toggle-btn active" data-trip="return">Return Trip</button>
               <button class="toggle-btn" data-trip="oneway">One-Way</button>
             </div>
-            <p class="ledger-instruction">Select your origin and destination below.</p>
+            
+            <div class="global-dates">
+              <div class="date-group">
+                <label>Departure</label>
+                <div class="date-display" id="global-dept-display">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="global-dept-input">
+              </div>
+              <div class="date-group" id="return-date-wrapper">
+                <label>Return</label>
+                <div class="date-display" id="global-ret-display">-- / -- / ----</div>
+                <input type="date" class="ledger-date-input" id="global-ret-input">
+              </div>
+            </div>
           </div>
 
-          <!-- Refined 3-Column Integrated Booking Ledger -->
-          <div class="destination-ledger reveal-item">
+          <!-- Refined 2-Column Integrated Booking Ledger -->
+          <div class="destination-ledger reveal-item stag-1">
             <!-- Header Row for Aesthetic Alignment -->
             <div class="ledger-header">
               <span class="col-identity">Port Identity</span>
               <span class="col-logic">Logistical Selection</span>
-              <span class="col-date">Scheduled Date</span>
             </div>
 
             <!-- Ledger Entry: Chilumba -->
@@ -111,10 +126,6 @@
                 <button class="ledger-btn" data-action="from">Set Origin</button>
                 <div class="ledger-divider"></div>
                 <button class="ledger-btn" data-action="to">Set Destination</button>
-              </div>
-              <div class="ledger-date-col">
-                <div class="date-display" id="date-display-chilumba">-- / -- / ----</div>
-                <input type="date" class="ledger-date-input" id="date-input-chilumba">
               </div>
             </div>
 
@@ -129,10 +140,6 @@
                 <div class="ledger-divider"></div>
                 <button class="ledger-btn" data-action="to">Set Destination</button>
               </div>
-              <div class="ledger-date-col">
-                <div class="date-display" id="date-display-nkhata-bay">-- / -- / ----</div>
-                <input type="date" class="ledger-date-input" id="date-input-nkhata-bay">
-              </div>
             </div>
 
             <!-- Ledger Entry: Likoma -->
@@ -145,10 +152,6 @@
                 <button class="ledger-btn" data-action="from">Set Origin</button>
                 <div class="ledger-divider"></div>
                 <button class="ledger-btn" data-action="to">Set Destination</button>
-              </div>
-              <div class="ledger-date-col">
-                <div class="date-display" id="date-display-likoma">-- / -- / ----</div>
-                <input type="date" class="ledger-date-input" id="date-input-likoma">
               </div>
             </div>
 
@@ -163,10 +166,6 @@
                 <div class="ledger-divider"></div>
                 <button class="ledger-btn" data-action="to">Set Destination</button>
               </div>
-              <div class="ledger-date-col">
-                <div class="date-display" id="date-display-chipoka">-- / -- / ----</div>
-                <input type="date" class="ledger-date-input" id="date-input-chipoka">
-              </div>
             </div>
 
             <!-- Ledger Entry: Monkey Bay -->
@@ -179,10 +178,6 @@
                 <button class="ledger-btn" data-action="from">Set Origin</button>
                 <div class="ledger-divider"></div>
                 <button class="ledger-btn" data-action="to">Set Destination</button>
-              </div>
-              <div class="ledger-date-col">
-                <div class="date-display" id="date-display-monkey-bay">-- / -- / ----</div>
-                <input type="date" class="ledger-date-input" id="date-input-monkey-bay">
               </div>
             </div>
           </div>
@@ -284,12 +279,7 @@
     <!-- App-Style Bottom Navigation for Mobile -->
     <nav class="mobile-bottom-bar">
       <a href="#journey" class="bottom-nav-item">The Journey</a>
-      <a href="#" class="bottom-nav-home">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-      </a>
+      <a href="#" class="bottom-nav-item">Home</a>
       <a href="#vessels" class="bottom-nav-item">Booking</a>
     </nav>
 
@@ -340,50 +330,40 @@
         returnDate: null
       };
 
+      // Global Selectors
       const ledgerRows = document.querySelectorAll('.ledger-row');
       const manifestSection = document.getElementById('manifest');
-      const routeSummary = document.getElementById('route-summary');
-      const dateSummary = document.getElementById('date-summary');
       const nameInput = document.querySelector('.manifest-form input[type="text"]');
 
-      function checkCompletion() {
-        const hasOrigin = !!bookingState.origin;
-        const hasDest = !!bookingState.destination;
-        const hasDeptDate = !!bookingState.departureDate;
-        const hasRetDate = !!bookingState.returnDate;
+      // Global Date Inputs
+      const globalDeptInput = document.getElementById('global-dept-input');
+      const globalRetInput = document.getElementById('global-ret-input');
+      const globalDeptDisplay = document.getElementById('global-dept-display');
+      const globalRetDisplay = document.getElementById('global-ret-display');
+      const returnDateWrapper = document.getElementById('return-date-wrapper');
 
-        let isComplete = false;
-        if (bookingState.tripType === 'oneway') {
-          isComplete = hasOrigin && hasDest && hasDeptDate;
-        } else {
-          isComplete = hasOrigin && hasDest && hasDeptDate && hasRetDate;
-        }
+      // Custom date formatter
+      const formatDate = (dateString) => {
+        if (!dateString) return '-- / -- / ----';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+      };
 
-        if (isComplete) {
-          revealManifest();
-        }
+      // Handle Global Date Selections
+      if (globalDeptInput) {
+        globalDeptInput.addEventListener('change', (e) => {
+          bookingState.departureDate = e.target.value;
+          globalDeptDisplay.textContent = formatDate(e.target.value);
+          checkCompletion();
+        });
       }
 
-      function revealManifest() {
-        manifestSection.style.display = 'block';
-        if (!manifestSection.classList.contains('is-visible')) {
-          manifestSection.classList.add('is-visible');
-          manifestSection.scrollIntoView({ behavior: 'smooth' });
-          // Auto-focus the name field after a slight delay for smooth scroll
-          setTimeout(() => nameInput.focus(), 800);
-        }
-      }
-
-      function updateSummary() {
-        const routeText = `${bookingState.origin || '...'} → ${bookingState.destination || '...'}`;
-        let dateText = `${bookingState.departureDate || '...'}`;
-        if (bookingState.tripType === 'return') {
-          dateText += ` / ${bookingState.returnDate || '...'}`;
-        }
-        
-        routeSummary.textContent = routeText;
-        dateSummary.textContent = dateText;
-        checkCompletion();
+      if (globalRetInput) {
+        globalRetInput.addEventListener('change', (e) => {
+          bookingState.returnDate = e.target.value;
+          globalRetDisplay.textContent = formatDate(e.target.value);
+          checkCompletion();
+        });
       }
 
       // Handle trip type toggle
@@ -392,7 +372,18 @@
           document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
           e.target.classList.add('active');
           bookingState.tripType = e.target.getAttribute('data-trip');
-          updateSummary();
+          
+          if (bookingState.tripType === 'oneway') {
+            returnDateWrapper.style.opacity = '0.3';
+            returnDateWrapper.style.pointerEvents = 'none';
+            globalRetInput.value = '';
+            globalRetDisplay.textContent = '-- / -- / ----';
+            bookingState.returnDate = null;
+          } else {
+            returnDateWrapper.style.opacity = '1';
+            returnDateWrapper.style.pointerEvents = 'all';
+          }
+          checkCompletion();
         });
       });
 
@@ -411,33 +402,64 @@
             ledgerRows.forEach(r => r.classList.remove('active-to'));
             row.classList.add('active-to');
           }
-
-          // Visual cue: open the date picker for this row
-          const dateInput = row.querySelector('.ledger-date-input');
-          dateInput.showPicker();
           
-          updateSummary();
+          checkCompletion();
         });
       });
 
-      // Handle date changes on each row
-      document.querySelectorAll('.ledger-date-input').forEach(input => {
-        input.addEventListener('change', (e) => {
-          const row = e.target.closest('.ledger-row');
-          const dateValue = e.target.value;
-          const display = row.querySelector('.date-display');
-          
-          display.textContent = dateValue || '-- / -- / ----';
-          
-          if (row.classList.contains('active-from')) {
-            bookingState.departureDate = dateValue;
-          } else if (row.classList.contains('active-to')) {
-            bookingState.returnDate = dateValue;
+      function updateManifestSummary() {
+        // Safe query for manifest elements, in case they are not in DOM yet or structure changed
+        const summaryOrigin = document.getElementById('summary-origin');
+        const summaryDest = document.getElementById('summary-dest');
+        const summaryDate = document.getElementById('summary-date');
+        
+        // Use generic elements if the specific ones above don't exist yet (they aren't in index.html)
+        // Check for the base elements from the previous design first
+        const routeSummary = document.getElementById('route-summary');
+        const dateSummary = document.getElementById('date-summary');
+
+        if (routeSummary && dateSummary) {
+          const routeText = `${bookingState.origin || '...'} → ${bookingState.destination || '...'}`;
+          let dateText = `${formatDate(bookingState.departureDate)}`;
+          if (bookingState.tripType === 'return' && bookingState.returnDate) {
+            dateText += ` — ${formatDate(bookingState.returnDate)}`;
           }
-          
-          updateSummary();
-        });
-      });
+          routeSummary.textContent = routeText;
+          dateSummary.textContent = dateText;
+        }
+
+      }
+
+      function checkCompletion() {
+        const hasOrigin = !!bookingState.origin;
+        const hasDest = !!bookingState.destination;
+        const hasDeptDate = !!bookingState.departureDate;
+        const hasRetDate = !!bookingState.returnDate;
+
+        let isComplete = false;
+        if (bookingState.tripType === 'oneway') {
+          isComplete = hasOrigin && hasDest && hasDeptDate;
+        } else {
+          isComplete = hasOrigin && hasDest && hasDeptDate && hasRetDate;
+        }
+
+        updateManifestSummary();
+
+        if (isComplete) {
+          revealManifest();
+        }
+      }
+
+      function revealManifest() {
+        if (manifestSection) {
+          manifestSection.style.display = 'block';
+          if (!manifestSection.classList.contains('is-visible')) {
+            manifestSection.classList.add('is-visible');
+            manifestSection.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => { if(nameInput) nameInput.focus(); }, 800);
+          }
+        }
+      }
 
       // Intersection Observer for scroll animations
       const observer = new IntersectionObserver((entries) => {
